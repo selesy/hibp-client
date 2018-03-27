@@ -1,0 +1,12 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+classpath-data.json
+.vscode
+.settings.json
+
+# Maven
+target/

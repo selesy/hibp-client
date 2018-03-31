@@ -16,7 +16,7 @@ public class HibpConfigurationTests {
      * This test simply verifies that the constants defined in HibpConstants
      * are properly loaded into the default HibpConfiguration.  Note that this
      * test is really more of a hedge against the Lombok API for @Builder,
-     * @Builder.Default and @Value don't change in a way that breaks the HIBP
+     * @Builder.Default and @Value changing in a way that breaks the HIBP
      * client's ability to connect to the server.
      */
     @Test

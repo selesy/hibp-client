@@ -1,6 +1,5 @@
 package com.selesy.hibp;
 
-import java.net.URL;
 import java.util.stream.Stream;
 
 /**

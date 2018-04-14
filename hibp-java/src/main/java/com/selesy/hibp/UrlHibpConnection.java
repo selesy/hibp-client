@@ -9,9 +9,18 @@ import java.util.stream.Stream;
 
 import lombok.extern.java.Log;
 
+/**
+ * A Java implementation of of the HibpConnection.
+ * 
+ * @see HibpConnection
+ */
 @Log
 public class UrlHibpConnection implements HibpConnection {
 
+	/**
+	 * A factory method that produces an HibpConnection given a configuation
+	 * and a hash prefix.
+	 */
 	public static Factory factory = (configuration, hashPrefix) -> {
 		try {
 			URL url = new URL(configuration.getHibpUrl() + hashPrefix);
@@ -33,18 +42,26 @@ public class UrlHibpConnection implements HibpConnection {
 		this.connection = connection;
 	}
 
+	/**
+	 * Provides a Stream<String> in which each line of the HIBP result is returned.
+	 * 
+	 * @return A stream of hashSuffix:count strings
+	 */
 	@Override
 	public Stream<String> stream() {
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			return reader.lines();
-	} catch (IOException e) {
+		} catch (IOException e) {
 			log.severe(() -> e.getMessage());
 			return Stream.empty();
 		}
 	}
 
+	/**
+	 * @see AutoCloseable
+	 */
 	@Override
 	public void close() throws Exception {
 		connection.disconnect();
